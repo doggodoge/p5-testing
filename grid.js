@@ -1,6 +1,7 @@
 class Grid {
   constructor(squareSize, width, height) {
     this.squareSize = this.#closestDivisible(squareSize);
+    /** @type {Array<Array<{ squareSize: number; x: number; y: number; fill: string; }>>} */
     this.grid = this.#initializeGrid();
     this._width = width;
     this._height = height;
