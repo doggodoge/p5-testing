@@ -1,15 +1,14 @@
 class Grid {
   constructor(squareSize, width, height) {
     this.squareSize = this.#closestDivisible(squareSize);
+    this.grid = this.#initializeGrid();
     this._width = width;
     this._height = height;
-    this._grid = this.#initializeGrid();
   }
 
   draw() {
-    for (const row of this._grid) {
+    for (const row of this.grid) {
       for (const cell of row) {
-        console.log(cell);
         fill(cell.fill);
         square(cell.x, cell.y, cell.squareSize);
       }
@@ -17,10 +16,11 @@ class Grid {
   }
 
   #initializeGrid() {
+    const grid = [];
     for (let h = 0; h < height / this.squareSize; h++) {
-      this._grid[h] = [];
+      grid[h] = [];
       for (let w = 0; w < width / this.squareSize; w++) {
-        this._grid[h][w] = {
+        grid[h][w] = {
           squareSize: this.squareSize,
           x: this.squareSize * w,
           y: this.squareSize * h,
@@ -28,6 +28,7 @@ class Grid {
         };
       }
     }
+    return grid;
   }
 
   #closestDivisible(squareSize) {
