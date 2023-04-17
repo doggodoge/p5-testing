@@ -10,6 +10,7 @@ class Grid {
   draw() {
     for (const row of this.grid) {
       for (const cell of row) {
+        noStroke();
         fill(cell.fill);
         square(cell.x, cell.y, cell.squareSize);
       }
